@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<opencv_storage>
+<stage10>
+  <maxWeakCount>10</maxWeakCount>
+  <stageThreshold>-6.4296007156372070e-01</stageThreshold>
+  <weakClassifiers>
+    <_>
+      <internalNodes>
+        0 -1 55371 -1.8071391968987882e-04</internalNodes>
+      <leafValues>
+        5.3908354043960571e-01 -6.3291138410568237e-01</leafValues></_>
+    <_>
+      <internalNodes>
+        0 -1 55724 8.8298111222684383e-05</internalNodes>
+      <leafValues>
+        2.8047412633895874e-01 -8.4967708587646484e-01</leafValues></_>
+    <_>
+      <internalNodes>
+        0 -1 50921 5.0439117476344109e-03</internalNodes>
+      <leafValues>
+        2.1647827327251434e-01 -8.3651232719421387e-01</leafValues></_>
+    <_>
+      <internalNodes>
+        0 -1 34394 9.3640517443418503e-03</internalNodes>
+      <leafValues>
+        -4.2549595236778259e-01 4.8399457335472107e-01</leafValues></_>
+    <_>
+      <internalNodes>
+        0 -1 43819 -2.4209835100919008e-03</internalNodes>
+      <leafValues>
+        7.7018088102340698e-01 -2.7933871746063232e-01</leafValues></_>
+    <_>
+      <internalNodes>
+        0 -1 1105 2.5340443849563599e-01</internalNodes>
+      <leafValues>
+        -5.5993860960006714e-01 3.3150753378868103e-01</leafValues></_>
+    <_>
+      <internalNodes>
+        0 -1 30299 -2.5116163305938244e-03</internalNodes>
+      <leafValues>
+        4.7223928570747375e-01 -3.9038771390914917e-01</leafValues></_>
+    <_>
+      <internalNodes>
+        0 -1 72030 -8.5996632697060704e-04</internalNodes>
+      <leafValues>
+        4.9314576387405396e-01 -3.5778602957725525e-01</leafValues></_>
+    <_>
+      <internalNodes>
+        0 -1 51630 -1.4374908641912043e-04</internalNodes>
+      <leafValues>
+        2.7563524246215820e-01 -7.1079111099243164e-01</leafValues></_>
+    <_>
+      <internalNodes>
+        0 -1 76890 -4.6390928328037262e-03</internalNodes>
+      <leafValues>
+        4.7435915470123291e-01 -4.0105476975440979e-01</leafValues></_></weakClassifiers></stage10>
+</opencv_storage>
