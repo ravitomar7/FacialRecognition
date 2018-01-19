@@ -32,7 +32,9 @@ public class FaceDetect extends javax.swing.JFrame {
     VideoCapture webSource = null;
     Mat frame = new Mat();
     MatOfByte mem = new MatOfByte();
-    CascadeClassifier faceDetector = new CascadeClassifier(FaceDetect.class.getResource("haarcascade_frontalface_alt.xml").getPath().substring(1));
+    CascadeClassifier sanyamDetector = new CascadeClassifier(FaceDetect.class.getResource("myhaar.xml").getPath().substring(1));
+//    CascadeClassifier faceDetector = new CascadeClassifier(FaceDetect.class.getResource("myhaar.xml").getPath().substring(1));
+   // CascadeClassifier eyeDetector = new CascadeClassifier(FaceDetect.class.getResource("haarcascade_eye.xml").getPath().substring(1));
     MatOfRect faceDetections = new MatOfRect();
 ///    
 
@@ -48,12 +50,20 @@ public class FaceDetect extends javax.swing.JFrame {
                         try {
                             webSource.retrieve(frame);
                             Graphics g = jPanel1.getGraphics();
-                            faceDetector.detectMultiScale(frame, faceDetections);
+                            sanyamDetector.detectMultiScale(frame, faceDetections);
                             for (Rect rect : faceDetections.toArray()) {
                                // System.out.println("ttt");
+                            	System.out.println("Sanyam");
                                 Core.rectangle(frame, new Point(rect.x, rect.y), new Point(rect.x + rect.width, rect.y + rect.height),
-                                        new Scalar(0, 255,0));
+                                        new Scalar(255, 255, 0));
                             }
+//                            sanyamDetector.detectMultiScale(frame, faceDetections);
+//                            for (Rect rect : faceDetections.toArray()) {
+//                            	//cv2.putText("Sanyam jain");
+//                                System.out.println("Sanyam");
+//                                Core.rectangle(frame, new Point(rect.x, rect.y), new Point(rect.x + rect.width, rect.y + rect.height),
+//                                        new Scalar(255, 255,255));
+//                            }
                             Highgui.imencode(".bmp", frame, mem);
                             Image im = ImageIO.read(new ByteArrayInputStream(mem.toArray()));
                             BufferedImage buff = (BufferedImage) im;
@@ -77,7 +87,7 @@ public class FaceDetect extends javax.swing.JFrame {
     
     public FaceDetect() {
         initComponents();
-        System.out.println(FaceDetect.class.getResource("haarcascade_frontalface_alt.xml").getPath().substring(1));
+        System.out.println(FaceDetect.class.getResource("myhaar.xml").getPath().substring(1));
     }
 
    
@@ -171,7 +181,7 @@ public class FaceDetect extends javax.swing.JFrame {
         Thread t = new Thread(myThread);
         t.setDaemon(true);
         myThread.runnable = true;
-        t.start();                 //start thrad
+        t.start();                 //start thread
         jButton1.setEnabled(false);  // deactivate start button
         jButton2.setEnabled(true);  //  activate stop button
 
