@@ -1,26 +1,41 @@
 package faceDet;
 
 import java.awt.Graphics;
-import java.awt.Image;
 import java.awt.image.BufferedImage;
+
 import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import javax.imageio.ImageIO;
+
+//import javafx.application.Application;
+//import javafx.embed.swing.SwingFXUtils;
+//import javafx.scene.Group;
+//import javafx.scene.Scene;
+//import javafx.scene.image.ImageView;
+//import javafx.scene.image.WritableImage;
+//import javafx.stage.Stage;
+
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
 import org.opencv.core.MatOfByte;
-import org.opencv.core.MatOfRect;
 import org.opencv.core.Point;
-import org.opencv.core.Rect;
 import org.opencv.core.Scalar;
+//import org.opencv.imgcodecs.Imgcodecs;
+import org.opencv.imgproc.Imgproc;
+import java.awt.Image;
+import org.opencv.core.MatOfRect;
+import org.opencv.core.Rect;
 import org.opencv.core.Size;
 import org.opencv.highgui.Highgui;
 import org.opencv.highgui.VideoCapture;
-import org.opencv.imgproc.Imgproc;
 import org.opencv.objdetect.CascadeClassifier;
-import org.opencv.core.*;
-
-import org.opencv.highgui.Highgui;        
-import org.opencv.highgui.VideoCapture;        
+import org.opencv.core.*;       
+import javax.speech.Central;
+import java.util.Locale;
+import javax.speech.Central;
+import javax.speech.synthesis.Synthesizer;
+import javax.speech.synthesis.SynthesizerModeDesc;
+import com.sun.speech.freetts.jsapi.FreeTTSEngineCentral;
         
 
 
@@ -48,6 +63,20 @@ public class FaceDetect extends javax.swing.JFrame {
                 while (runnable) {
                     if (webSource.grab()) {
                         try {
+                        	System.setProperty("freetts.voices",
+                                    "com.sun.speech.freetts.en.us.cmu_us_kal.KevinVoiceDirectory"); 
+                                    
+                                // Register Engine
+                                Central.registerEngineCentral
+                                    ("com.sun.speech.freetts.jsapi.FreeTTSEngineCentral");
+                                Synthesizer synthesizer =                                         
+                                        Central.createSynthesizer(new SynthesizerModeDesc(Locale.US));     
+                            
+                                    // Allocate synthesizer
+                                    synthesizer.allocate();        
+                                    
+                                    // Resume Synthesizer
+                                    synthesizer.resume();    
                             webSource.retrieve(frame);
                             Graphics g = jPanel1.getGraphics();
                             sanyamDetector.detectMultiScale(frame, faceDetections);
@@ -55,7 +84,13 @@ public class FaceDetect extends javax.swing.JFrame {
                                // System.out.println("ttt");
                             	System.out.println("Sanyam");
                                 Core.rectangle(frame, new Point(rect.x, rect.y), new Point(rect.x + rect.width, rect.y + rect.height),
-                                        new Scalar(255, 255, 0));
+                                        new Scalar(0, 255, 0));
+                                Core.putText(frame,"superuser", new Point(rect.x, rect.y), Core.FONT_HERSHEY_SIMPLEX,1,new Scalar(0,255,0),2);
+                                synthesizer.speakPlainText("Face Detected and recognised!", null);         
+                                synthesizer.waitEngineState(Synthesizer.QUEUE_EMPTY);
+                                
+                                // Deallocate the Synthesizer.
+                                synthesizer.deallocate();                     
                             }
 //                            sanyamDetector.detectMultiScale(frame, faceDetections);
 //                            for (Rect rect : faceDetections.toArray()) {
